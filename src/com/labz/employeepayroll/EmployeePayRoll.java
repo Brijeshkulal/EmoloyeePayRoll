@@ -86,12 +86,22 @@ public class EmployeePayRoll {
         }
     }
     
+    public long readDataFromFile() {
+        try {
+            String data = Files.readString(Paths.get(FILE_PATH));
+            System.out.println(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return countEntries();
+    }
+    
     public static void main(String[] args) {
 		System.out.println("welcome to employee pay roll service");
 		EmployeePayRoll employeePayRoll = new EmployeePayRoll();
 		employeePayRoll.readEmployeeData();
 		employeePayRoll.writeEmployeeData();
 		employeePayRoll.writeEmployeeDataToFile();
-		employeePayRoll.printData();
+		employeePayRoll.readDataFromFile();
 	}
 }
