@@ -74,11 +74,24 @@ public class EmployeePayRoll {
         return entries;
     }
     
+    public void printData()
+    {
+        try
+        {
+            Files.lines(Paths.get(FILE_PATH)).forEach(System.out::println);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
     public static void main(String[] args) {
 		System.out.println("welcome to employee pay roll service");
 		EmployeePayRoll employeePayRoll = new EmployeePayRoll();
 		employeePayRoll.readEmployeeData();
 		employeePayRoll.writeEmployeeData();
 		employeePayRoll.writeEmployeeDataToFile();
+		employeePayRoll.printData();
 	}
 }
